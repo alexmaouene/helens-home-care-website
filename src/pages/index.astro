@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { BOOKING_URL } from '../consts';
 
 const helpWith = [
   'Bathing, dressing & grooming',
@@ -47,10 +48,12 @@ const steps = [
         </p>
         <div class="mt-9 flex flex-wrap items-center gap-4">
           <a
-            href="/contact"
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener"
             class="rounded-md bg-brand px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-navy"
           >
-            Request a free consultation
+            Book a free consultation
           </a>
           <a href="tel:+12145550123" class="text-base font-semibold text-brand hover:text-navy">
             or call (214) 555-0123
@@ -145,10 +148,12 @@ const steps = [
       </p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
         <a
-          href="/contact"
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener"
           class="rounded-md bg-white px-6 py-3.5 text-base font-semibold text-navy transition-colors hover:bg-mist"
         >
-          Request a consultation
+          Book a free consultation
         </a>
         <a href="tel:+12145550123" class="text-base font-semibold text-sky hover:text-white">
           (214) 555-0123
