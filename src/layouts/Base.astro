@@ -39,8 +39,15 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 
     <header class="border-b border-mist">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <a href="/" class="flex items-center" aria-label="Helen's Home Care home">
-          <img src="/logo.svg" alt="Helen's Home Care" class="h-14 w-auto" />
+        <a href="/" class="flex items-center gap-3" aria-label="Helen's Home Care home">
+          <svg class="h-12 w-auto shrink-0 md:h-14" viewBox="0 0 82 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0 46 L41 8 L82 46 L82 90 L0 90 Z" fill="none" stroke="#185FA5" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M41 78 C32 68 19 62 19 49 C19 41 25 37 31 37 C36 37 40 40 41 44 C42 40 46 37 51 37 C57 37 63 41 63 49 C63 62 50 68 41 78 Z" fill="#378ADD"/>
+          </svg>
+          <span class="leading-none">
+            <span class="block font-display text-3xl font-semibold text-navy md:text-[2.1rem]">Helen's</span>
+            <span class="mt-1 block text-[11px] font-semibold uppercase tracking-[0.28em] text-sky md:text-xs">Home Care</span>
+          </span>
         </a>
 
         <nav aria-label="Main">
