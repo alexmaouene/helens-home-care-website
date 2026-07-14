@@ -6,10 +6,10 @@
   --color-sky: #378ADD;
   --color-mist: #E6F1FB;
   --color-ink: #253244;
-  --color-slate: #5A6B80;
+  --color-slate: #4E5E72;
 
   --font-display: "Fraunces", Georgia, serif;
-  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -27,6 +27,8 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--color-ink);
+  font-size: 1.0625rem; /* 17px base — easier reading for older eyes */
+  line-height: 1.6;
 }
 
 /* Signature: the roofline divider — echoes the house in the logo */
