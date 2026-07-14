@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0C447C;
+  --color-brand: #185FA5;
+  --color-sky: #378ADD;
+  --color-mist: #E6F1FB;
+  --color-ink: #253244;
+  --color-slate: #5A6B80;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+}
+
+/* Signature: the roofline divider — echoes the house in the logo */
+.roofline {
+  position: relative;
+  height: 22px;
+  width: 88px;
+}
+.roofline::before,
+.roofline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 50px;
+  height: 2.5px;
+  background: var(--color-sky);
+  border-radius: 2px;
+}
+.roofline::before {
+  left: 0;
+  transform: rotate(-24deg);
+  transform-origin: right bottom;
+}
+.roofline::after {
+  right: 0;
+  transform: rotate(24deg);
+  transform-origin: left bottom;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-sky);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

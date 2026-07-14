@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+
+const services = [
+  {
+    title: 'Personal care',
+    body: 'Respectful hands-on assistance with bathing, dressing, grooming, and toileting — always at your loved one\u2019s pace and preserving their dignity.',
+  },
+  {
+    title: 'Meal preparation',
+    body: 'Grocery planning, cooking meals that match dietary preferences and doctor\u2019s guidance, and sharing the table so meals aren\u2019t eaten alone.',
+  },
+  {
+    title: 'Medication reminders',
+    body: 'Friendly, reliable reminders to take medications on schedule. As a non-medical agency we don\u2019t administer medication — we make sure it isn\u2019t forgotten.',
+  },
+  {
+    title: 'Mobility & transfer assistance',
+    body: 'Steady support moving around the house, getting in and out of bed or chairs, and reducing fall risk on stairs and slick floors.',
+  },
+  {
+    title: 'Light housekeeping',
+    body: 'Laundry, dishes, changing linens, tidying living spaces — keeping the home safe, clean, and comfortable without disrupting how they like things.',
+  },
+  {
+    title: 'Companionship',
+    body: 'Conversation, games, walks, hobbies, and a consistent friendly face. Loneliness is a health risk; good company is part of good care.',
+  },
+  {
+    title: 'Errands & transportation',
+    body: 'Rides to appointments, pharmacy pick-ups, grocery runs, and church or social visits — so life doesn\u2019t shrink when driving stops.',
+  },
+  {
+    title: 'Respite for family caregivers',
+    body: 'Scheduled relief so the family member who carries most of the load can rest, travel, or simply catch their breath, knowing care continues.',
+  },
+];
+---
+<Base
+  title="Services — Helen's Home Care"
+  description="Non-medical personal assistance services in Dallas–Fort Worth: personal care, meal preparation, medication reminders, mobility assistance, housekeeping, companionship, transportation, and respite care."
+>
+  <section class="bg-mist/40">
+    <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+      <div class="roofline" aria-hidden="true"></div>
+      <h1 class="mt-6 font-display text-4xl text-navy md:text-5xl">Services</h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate">
+        Every family's needs are different, so care plans are built person by
+        person — a few hours a week to daily support. These are the services
+        we provide as a licensed Texas Personal Assistance Services agency.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 py-16">
+    <div class="grid gap-x-14 gap-y-12 md:grid-cols-2">
+      {services.map((s) => (
+        <div class="border-l-2 border-sky pl-6">
+          <h2 class="text-xl font-semibold text-navy">{s.title}</h2>
+          <p class="mt-3 leading-relaxed text-slate">{s.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 rounded-xl bg-mist/60 px-8 py-8 md:px-10">
+      <h2 class="font-display text-2xl text-navy">A note on what we don't do</h2>
+      <p class="mt-3 max-w-3xl leading-relaxed text-slate">
+        Helen's Home Care is a non-medical agency. We don't provide skilled
+        nursing, wound care, injections, or medication administration. If your
+        loved one needs medical care at home, we're glad to point you toward
+        licensed home health agencies — and our services often work alongside
+        theirs.
+      </p>
+    </div>
+
+    <div class="mt-16 text-center">
+      <a
+        href="/contact"
+        class="inline-block rounded-md bg-brand px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-navy"
+      >
+        Ask about a care plan
+      </a>
+    </div>
+  </section>
+</Base>

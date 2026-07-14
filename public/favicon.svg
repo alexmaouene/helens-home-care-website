@@ -1,0 +1,7 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <title>Helen's Home Care - icon</title>
+  <g transform="translate(70, 60)">
+    <path d="M0 56 L50 10 L100 56 L100 110 L0 110 Z" fill="none" stroke="#185FA5" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M50 95 C39 83 23 76 23 60 C23 50 31 45 38 45 C44 45 49 49 50 54 C51 49 56 45 62 45 C69 45 77 50 77 60 C77 76 61 83 50 95 Z" fill="#378ADD"/>
+  </g>
+</svg>
