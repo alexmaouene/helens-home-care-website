@@ -1,111 +1,181 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const services = [
+  'A few hours a week',
+  'Daily support',
+  'Overnight care',
+  'Respite / short-term',
+  "Not sure yet — help me decide",
+];
+
+const careNeeded = [
+  'Companionship',
+  'Personal care (bathing & dressing)',
+  'Meal preparation',
+  'Medication reminders',
+  'Mobility & transfers',
+  'Light housekeeping',
+  'Errands & transportation',
+  'Respite for family caregivers',
+];
+
+const inputClass =
+  'mt-2 w-full rounded-md border border-slate/40 px-4 py-3 text-[15px] text-ink focus:border-brand';
 ---
 <Base
   title="Contact — Helen's Home Care"
   description="Request a free in-home consultation with Helen's Home Care, or call (214) 555-0123. Serving the Dallas–Fort Worth area."
 >
-  <section class="bg-mist/40">
-    <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
-      <div class="roofline" aria-hidden="true"></div>
-      <h1 class="mt-6 font-display text-4xl text-navy md:text-5xl">Contact us</h1>
-      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate">
-        The fastest way to reach us is a phone call. Prefer to write? Use the
-        form and we'll respond within one business day.
-      </p>
-    </div>
-  </section>
+  <section class="bg-mist/40 py-16 md:py-24">
+    <div class="mx-auto max-w-3xl px-5">
+      <!-- Contact card -->
+      <div class="rounded-2xl border border-mist bg-white px-6 py-10 shadow-sm md:px-12 md:py-12">
+        <div class="text-center">
+          <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-mist text-brand">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M3 7l9 6 9-6" />
+            </svg>
+          </span>
+          <div class="roofline mx-auto mt-6" aria-hidden="true"></div>
+          <h1 class="mt-5 font-display text-4xl text-navy md:text-5xl">Contact us</h1>
+          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-slate">
+            Fill out the form and a member of our care team will be in touch —
+            usually within one business day. No cost, no obligation.
+          </p>
+        </div>
 
-  <section class="mx-auto max-w-6xl px-5 py-16">
-    <div class="grid gap-14 md:grid-cols-[1fr_1.3fr]">
-      <div class="space-y-8">
+        <form
+          class="mt-10 text-left"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <!-- Name -->
+          <fieldset class="border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Your name <span class="text-brand">*</span></legend>
+            <div class="mt-2 grid gap-4 sm:grid-cols-2">
+              <div>
+                <input
+                  id="first-name" name="First name" type="text" required autocomplete="given-name"
+                  class={inputClass} placeholder="First name" aria-label="First name"
+                />
+              </div>
+              <div>
+                <input
+                  id="last-name" name="Last name" type="text" required autocomplete="family-name"
+                  class={inputClass} placeholder="Last name" aria-label="Last name"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Phone + Email -->
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-navy">Phone number <span class="text-brand">*</span></label>
+              <input
+                id="phone" name="Phone" type="tel" required autocomplete="tel"
+                class={inputClass} placeholder="(555) 123-4567"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold text-navy">Email <span class="font-normal text-slate">(optional)</span></label>
+              <input
+                id="email" name="Email" type="email" autocomplete="email"
+                class={inputClass} placeholder="you@example.com"
+              />
+            </div>
+          </div>
+
+          <!-- Relationship -->
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Who is care for?</legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['Myself', 'A loved one', "I'm a care professional"].map((opt) => (
+                <label class="flex items-center gap-2.5 text-[15px] text-ink">
+                  <input type="radio" name="Care recipient" value={opt} class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- Desired service -->
+          <div class="mt-6">
+            <label for="service" class="block text-sm font-semibold text-navy">How much support are you looking for?</label>
+            <select
+              id="service" name="Desired service"
+              class="mt-2 w-full rounded-md border border-slate/40 bg-white px-4 py-3 text-[15px] text-ink focus:border-brand"
+            >
+              <option value="" selected disabled>Please select…</option>
+              {services.map((s) => <option value={s}>{s}</option>)}
+            </select>
+          </div>
+
+          <!-- Care needed -->
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">What kind of help is needed? <span class="font-normal text-slate">(check any)</span></legend>
+            <div class="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+              {careNeeded.map((c) => (
+                <label class="flex items-center gap-2.5 text-[15px] text-ink">
+                  <input type="checkbox" name="Care needed" value={c} class="h-4 w-4 accent-brand" />
+                  {c}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- Message -->
+          <div class="mt-6">
+            <label for="message" class="block text-sm font-semibold text-navy">
+              Anything else? <span class="font-normal text-slate">(optional)</span>
+            </label>
+            <textarea
+              id="message" name="Message" rows="4"
+              class={inputClass}
+              placeholder="What does a typical day look like? Where would a hand help most?"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="mt-8 w-full rounded-md bg-brand px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-navy"
+          >
+            Send request
+          </button>
+
+          <p class="mt-4 text-center text-sm leading-relaxed text-slate">
+            Please don't include medical or health details in this form —
+            we'll discuss care needs by phone.
+          </p>
+        </form>
+      </div>
+
+      <!-- Contact details -->
+      <div class="mt-12 grid gap-8 text-center sm:grid-cols-3">
         <div>
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-sky">Phone</h2>
-          <a href="tel:+12145550123" class="mt-2 block font-display text-3xl text-navy hover:text-brand">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-sky">Call us</h2>
+          <a href="tel:+12145550123" class="mt-2 block font-display text-2xl text-navy hover:text-brand">
             (214) 555-0123
           </a>
-          <p class="mt-2 text-[15px] text-slate">Monday–Friday, 8am–6pm · After-hours voicemail returned next morning</p>
+          <p class="mt-1 text-sm text-slate">Mon–Fri, 8am–6pm</p>
         </div>
         <div>
           <h2 class="text-sm font-semibold uppercase tracking-wide text-sky">Email</h2>
           <a href="mailto:care@helenshomecare.com" class="mt-2 block text-lg font-semibold text-brand hover:text-navy">
             care@helenshomecare.com
           </a>
+          <p class="mt-1 text-sm text-slate">Replies within one business day</p>
         </div>
         <div>
           <h2 class="text-sm font-semibold uppercase tracking-wide text-sky">Service area</h2>
-          <p class="mt-2 text-lg text-ink">Dallas–Fort Worth metroplex, Texas</p>
+          <p class="mt-2 text-lg text-ink">Dallas–Fort Worth</p>
+          <p class="mt-1 text-sm text-slate">Metroplex, Texas</p>
         </div>
       </div>
 
-      <form
-        class="rounded-xl border border-mist bg-white p-7 shadow-sm md:p-9"
-        action="https://formspree.io/f/YOUR_FORM_ID"
-        method="POST"
-      >
-        <h2 class="font-display text-2xl text-navy">Request a free consultation</h2>
-
-        <div class="mt-7 grid gap-6 sm:grid-cols-2">
-          <div>
-            <label for="name" class="block text-sm font-semibold text-navy">Your name</label>
-            <input
-              id="name" name="name" type="text" required autocomplete="name"
-              class="mt-2 w-full rounded-md border border-slate/40 px-4 py-3 text-[15px] focus:border-brand"
-            />
-          </div>
-          <div>
-            <label for="phone" class="block text-sm font-semibold text-navy">Phone</label>
-            <input
-              id="phone" name="phone" type="tel" required autocomplete="tel"
-              class="mt-2 w-full rounded-md border border-slate/40 px-4 py-3 text-[15px] focus:border-brand"
-            />
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <label for="email" class="block text-sm font-semibold text-navy">Email</label>
-          <input
-            id="email" name="email" type="email" autocomplete="email"
-            class="mt-2 w-full rounded-md border border-slate/40 px-4 py-3 text-[15px] focus:border-brand"
-          />
-        </div>
-
-        <div class="mt-6">
-          <label for="care-for" class="block text-sm font-semibold text-navy">Who needs care?</label>
-          <select
-            id="care-for" name="care-for"
-            class="mt-2 w-full rounded-md border border-slate/40 bg-white px-4 py-3 text-[15px] focus:border-brand"
-          >
-            <option>A parent</option>
-            <option>A spouse</option>
-            <option>Myself</option>
-            <option>Someone else</option>
-          </select>
-        </div>
-
-        <div class="mt-6">
-          <label for="message" class="block text-sm font-semibold text-navy">
-            Tell us a little about your situation <span class="font-normal text-slate">(optional)</span>
-          </label>
-          <textarea
-            id="message" name="message" rows="4"
-            class="mt-2 w-full rounded-md border border-slate/40 px-4 py-3 text-[15px] focus:border-brand"
-            placeholder="What does a typical day look like? Where would a hand help most?"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          class="mt-8 w-full rounded-md bg-brand px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-navy"
-        >
-          Send request
-        </button>
-
-        <p class="mt-4 text-sm leading-relaxed text-slate">
-          Please don't include medical or health details in this form. We'll
-          discuss care needs by phone.
-        </p>
-      </form>
+      <p class="mt-12 text-center font-display text-2xl text-navy">Your care is our priority.</p>
     </div>
   </section>
 </Base>
