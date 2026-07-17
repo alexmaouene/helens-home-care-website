@@ -11,6 +11,29 @@ const helpWith = [
   'Companionship',
 ];
 
+const reasons = [
+  {
+    title: 'The same caregiver, every time',
+    body: 'Consistency is the whole job. We match one caregiver to your family and protect that match — so your parent is never re-explaining themselves to a stranger.',
+  },
+  {
+    title: 'Our caregivers work for us — not a roster',
+    body: 'Every caregiver is screened, background-checked, trained, and employed by Helen’s Home Care. We never subcontract the person who walks through your door.',
+  },
+  {
+    title: 'Licensed, insured, and family-owned',
+    body: 'Licensed by the Texas Health and Human Services Commission as a Home and Community Support Services Agency. A family business, not a franchise.',
+  },
+  {
+    title: 'Care that flexes when life does',
+    body: 'A few hours a week or support every day. Needs change — schedules change with them, without penalties or renegotiating a contract.',
+  },
+  {
+    title: "You're never left in the dark",
+    body: 'We tell you what we notice: the good days, the off days, and the small changes worth a conversation — especially if you live far away.',
+  },
+];
+
 const steps = [
   {
     n: '1',
@@ -86,10 +109,10 @@ const steps = [
   <!-- Hero image -->
   <section class="mx-auto max-w-6xl px-5">
     <img
-      src="/images/care-companionship.jpg"
-      alt="A Helen's Home Care caregiver helping two older adults with an activity at the kitchen table"
+      src="/images/care-dancing.jpg"
+      alt="A Helen's Home Care caregiver sharing a dance with an older woman in her living room"
       width="1400"
-      height="990"
+      height="933"
       class="h-64 w-full rounded-xl object-cover shadow-sm md:h-[440px]"
       loading="eager"
     />
@@ -115,6 +138,78 @@ const steps = [
           have become hard, keep good company, and keep you in the loop — so
           your visits can be about family again, not chores.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why families choose us -->
+  <section class="bg-mist/40 py-20">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="roofline" aria-hidden="true"></div>
+      <h2 class="mt-6 font-display text-3xl text-navy">Why families choose us</h2>
+      <div class="mt-12 grid gap-12 md:grid-cols-[1fr_1.3fr] md:items-start">
+        <img
+          src="/images/care-companionship.jpg"
+          alt="A Helen's Home Care caregiver helping two older adults with an activity at the kitchen table"
+          width="1400"
+          height="990"
+          class="h-72 w-full rounded-xl object-cover shadow-sm md:h-[520px]"
+          loading="lazy"
+        />
+        <ul class="space-y-8">
+          {reasons.map((r) => (
+            <li>
+              <h3 class="flex items-start gap-3 text-xl font-semibold text-navy">
+                <svg class="mt-1 h-5 w-5 shrink-0 text-sky" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 10.5l4 4 8-9" />
+                </svg>
+                {r.title}
+              </h3>
+              <p class="mt-2 leading-relaxed text-slate">{r.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- What care costs families -->
+  <section class="mx-auto max-w-6xl px-5 py-20">
+    <div class="grid items-center gap-12 md:grid-cols-[1fr_1.2fr]">
+      <img
+        src="/images/care-friends.jpg"
+        alt="Two older women smiling together, arm in arm"
+        width="1400"
+        height="933"
+        class="h-72 w-full rounded-xl object-cover shadow-sm md:h-[440px]"
+        loading="lazy"
+      />
+      <div>
+        <div class="roofline" aria-hidden="true"></div>
+        <h2 class="mt-6 font-display text-3xl leading-snug text-navy">
+          We know what saying yes to care can cost
+        </h2>
+        <div class="mt-6 space-y-5 text-lg leading-relaxed text-slate">
+          <p>
+            Families tell us things they don't say out loud very often. That
+            the savings have gone quiet. That they retired earlier than they
+            meant to. That they've sat at the kitchen table and talked about
+            selling the house — the one their parents worked a lifetime for —
+            because care has to come from somewhere.
+          </p>
+          <p>
+            We don't take that lightly. When a family stretches that far for
+            someone they love, the least we owe them is care worth the
+            sacrifice: the same caregiver, on time, treating your parent with
+            respect, and telling you the truth about how they're really doing.
+          </p>
+          <p>
+            This is a hard season, and we can't make that part easy. What we
+            can do is make the care itself the one thing you never have to
+            worry about — and if there's help you might qualify for, we'll
+            point you toward it, even when it doesn't benefit us.
+          </p>
+        </div>
       </div>
     </div>
   </section>
