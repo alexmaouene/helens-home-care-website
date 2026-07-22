@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+
+const perks = [
+  {
+    title: 'Consistent clients & schedules',
+    body: 'We match you with clients you see regularly, on a schedule that fits your life — not a different address every day.',
+  },
+  {
+    title: 'You work for us, not a gig app',
+    body: 'Caregivers are our employees — screened, trained, and supported by a real office you can reach.',
+  },
+  {
+    title: 'Work that matters, close to home',
+    body: 'Serving the Dallas–Fort Worth area. Help older adults stay safe in the homes they love — a few hours a week or full-time.',
+  },
+];
+
+const qualifications = [
+  'Legally authorized to work in the U.S.',
+  'Valid driver’s license & insured vehicle',
+  'High school diploma or GED',
+  'Reliable, punctual, and a non-smoker on duty',
+  'Compassion and patience with older adults',
+  'CNA license (a plus — not required)',
+  'CPR / First Aid certified, or willing to certify',
+];
+
+const availability = [
+  'Full-time',
+  'Part-time',
+  'Weekends',
+  'Overnight',
+  'As-needed (PRN)',
+];
+
+const inputClass =
+  'mt-2 w-full rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand';
+const subLabel = 'mt-1 block text-sm text-slate';
+---
+<Base
+  title="Careers — Helen's Home Care"
+  description="Join the Helen's Home Care team as a caregiver in the Dallas–Fort Worth area. Apply to help older adults stay safely in the homes they love."
+>
+  <!-- Hero -->
+  <section class="bg-mist/40">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-2 md:py-20">
+      <img
+        src="/images/care-garden.jpg"
+        alt="A Helen's Home Care caregiver walking with an older woman through her garden"
+        width="1600"
+        height="900"
+        class="h-72 w-full rounded-xl object-cover object-top shadow-sm md:h-[460px]"
+        loading="eager"
+      />
+      <div>
+        <div class="roofline" aria-hidden="true"></div>
+        <h1 class="mt-6 font-display text-4xl text-navy md:text-5xl">Join our care team</h1>
+        <p class="mt-5 text-lg leading-relaxed text-slate">
+          Caregiving is hard, meaningful work — and we treat it that way. If
+          you're dependable, kind, and want to help older adults stay in the
+          homes they love, we'd like to meet you.
+        </p>
+        <p class="mt-4 text-lg leading-relaxed text-slate">
+          Complete the application below to be considered for a caregiver
+          position. Everything you share stays confidential and is never shared
+          without your permission.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why work with us -->
+  <section class="mx-auto max-w-6xl px-5 py-16">
+    <div class="roofline" aria-hidden="true"></div>
+    <h2 class="mt-6 font-display text-3xl text-navy">Why caregivers choose Helen's</h2>
+    <div class="mt-10 grid gap-10 md:grid-cols-3">
+      {perks.map((p) => (
+        <div>
+          <h3 class="flex items-start gap-3 text-xl font-semibold text-navy">
+            <svg class="mt-1 h-5 w-5 shrink-0 text-sky" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 10.5l4 4 8-9" />
+            </svg>
+            {p.title}
+          </h3>
+          <p class="mt-2 leading-relaxed text-slate">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Application form -->
+  <section class="bg-mist/40 py-16 md:py-20">
+    <div class="mx-auto max-w-3xl px-5">
+      <div class="rounded-2xl border border-mist bg-white px-6 py-10 shadow-sm md:px-12 md:py-12">
+        <div class="text-center">
+          <div class="roofline mx-auto" aria-hidden="true"></div>
+          <h2 class="mt-5 font-display text-3xl text-navy md:text-4xl">Caregiver application</h2>
+          <p class="mx-auto mt-3 max-w-md text-base text-slate">
+            Please provide all required information before submitting your
+            application. Fields marked <span class="text-brand">*</span> are required.
+          </p>
+        </div>
+
+        <form
+          class="mt-10 text-left"
+          action="https://formspree.io/f/YOUR_HIRING_FORM_ID"
+          method="POST"
+        >
+          <!-- Name -->
+          <fieldset class="border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Full name <span class="text-brand">*</span></legend>
+            <div class="mt-2 grid gap-4 sm:grid-cols-3">
+              <div>
+                <input id="first-name" name="First name" type="text" required autocomplete="given-name" class={inputClass} placeholder="First" aria-label="First name" />
+              </div>
+              <div>
+                <input id="middle-name" name="Middle name" type="text" autocomplete="additional-name" class={inputClass} placeholder="Middle" aria-label="Middle name" />
+              </div>
+              <div>
+                <input id="last-name" name="Last name" type="text" required autocomplete="family-name" class={inputClass} placeholder="Last" aria-label="Last name" />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Phone + Email -->
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-navy">Phone number <span class="text-brand">*</span></label>
+              <input id="phone" name="Phone" type="tel" required autocomplete="tel" class={inputClass} placeholder="(555) 123-4567" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold text-navy">Email <span class="text-brand">*</span></label>
+              <input id="email" name="Email" type="email" required autocomplete="email" class={inputClass} placeholder="you@example.com" />
+            </div>
+          </div>
+
+          <!-- DOB -->
+          <div class="mt-6">
+            <label for="dob" class="block text-sm font-semibold text-navy">Date of birth <span class="text-brand">*</span></label>
+            <input id="dob" name="Date of birth" type="date" required class={inputClass + ' sm:max-w-xs'} />
+            <span class={subLabel}>You must be 18 or older to apply.</span>
+          </div>
+
+          <!-- Address -->
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Home address <span class="text-brand">*</span></legend>
+            <input name="Street address" type="text" required autocomplete="address-line1" class={inputClass} placeholder="Street address" aria-label="Street address" />
+            <input name="Street address line 2" type="text" autocomplete="address-line2" class={inputClass} placeholder="Apt, suite, etc. (optional)" aria-label="Street address line 2" />
+            <div class="mt-4 grid gap-4 sm:grid-cols-3">
+              <input name="City" type="text" required autocomplete="address-level2" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="City" aria-label="City" />
+              <input name="State" type="text" required autocomplete="address-level1" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="State" aria-label="State" />
+              <input name="ZIP" type="text" required autocomplete="postal-code" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="ZIP code" aria-label="ZIP code" />
+            </div>
+          </fieldset>
+
+          <!-- Availability + experience -->
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="availability" class="block text-sm font-semibold text-navy">Availability</label>
+              <select id="availability" name="Availability" class="mt-2 w-full rounded-md border border-slate/40 bg-white px-4 py-3 text-base text-ink focus:border-brand">
+                <option value="" selected disabled>Please select…</option>
+                {availability.map((a) => <option value={a}>{a}</option>)}
+              </select>
+            </div>
+            <div>
+              <label for="experience" class="block text-sm font-semibold text-navy">Years of caregiving experience</label>
+              <input id="experience" name="Years of experience" type="number" min="0" max="60" class={inputClass} placeholder="e.g. 3" />
+            </div>
+          </div>
+
+          <!-- Qualifications -->
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Which of these apply to you? <span class="font-normal text-slate">(check all that apply)</span></legend>
+            <div class="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+              {qualifications.map((q) => (
+                <label class="flex items-start gap-2.5 text-base text-ink">
+                  <input type="checkbox" name="Qualifications" value={q} class="mt-1 h-4 w-4 shrink-0 accent-brand" />
+                  {q}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- Work authorization -->
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Are you legally authorized to work in the U.S.? <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['Yes', 'No'].map((opt) => (
+                <label class="flex items-center gap-2.5 text-base text-ink">
+                  <input type="radio" name="Authorized to work in US" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- Felony -->
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Have you ever been convicted of a felony? <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['Yes', 'No'].map((opt) => (
+                <label class="flex items-center gap-2.5 text-base text-ink">
+                  <input type="radio" name="Convicted of a felony" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+            <span class={subLabel}>A conviction won't automatically disqualify you — we consider each application individually.</span>
+          </fieldset>
+
+          <!-- Message -->
+          <div class="mt-6">
+            <label for="message" class="block text-sm font-semibold text-navy">
+              Tell us a little about yourself <span class="font-normal text-slate">(optional)</span>
+            </label>
+            <textarea id="message" name="About you" rows="4" class={inputClass} placeholder="Why do you want to be a caregiver? What kind of work are you looking for?"></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="mt-8 w-full rounded-md bg-brand px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-navy"
+          >
+            Submit application
+          </button>
+
+          <p class="mt-4 text-center text-sm leading-relaxed text-slate">
+            Helen's Home Care is an equal-opportunity employer. Your information
+            is kept confidential and used only to consider your application.
+          </p>
+        </form>
+      </div>
+
+      <p class="mt-8 text-center text-base text-slate">
+        Questions about caregiving with us? Call
+        <a href="tel:+12145550123" class="font-semibold text-brand hover:text-navy">(214) 555-0123</a>.
+      </p>
+    </div>
+  </section>
+</Base>
