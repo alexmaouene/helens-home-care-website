@@ -169,6 +169,20 @@ const subLabel = 'mt-1 block text-sm text-slate';
             </div>
           </div>
 
+          <!-- Own a car -->
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Do you own a car? <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['Yes', 'No'].map((opt) => (
+                <label class="flex items-center gap-2.5 text-base text-ink">
+                  <input type="radio" name="Owns a car" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+            <span class={subLabel}>Reliable transportation helps you get to clients across the DFW area.</span>
+          </fieldset>
+
           <!-- Qualifications -->
           <fieldset class="mt-6 border-0 p-0">
             <legend class="text-sm font-semibold text-navy">Which of these apply to you? <span class="font-normal text-slate">(check all that apply)</span></legend>
