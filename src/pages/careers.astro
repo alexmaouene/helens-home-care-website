@@ -16,14 +16,15 @@ const perks = [
   },
 ];
 
+// Values must match the Jotform checkbox options exactly (incl. straight apostrophes).
 const qualifications = [
   'Legally authorized to work in the U.S.',
-  'Valid driver’s license & insured vehicle',
+  "Valid driver's license & insured vehicle",
   'High school diploma or GED',
   'Reliable, punctual, and a non-smoker on duty',
   'Compassion and patience with seniors and individuals in need',
-  'CNA license (a plus — not required)',
-  'CPR / First Aid certified, or willing to certify',
+  'CNA license',
+  'CPR / First Aid certified',
 ];
 
 const availability = [
@@ -109,21 +110,23 @@ const subLabel = 'mt-1 block text-sm text-slate';
 
         <form
           class="mt-10 text-left"
-          action="https://formspree.io/f/YOUR_HIRING_FORM_ID"
+          action="https://submit.jotform.com/submit/262030348518049"
           method="POST"
         >
+          <input type="hidden" name="formID" value="262030348518049" />
+          <input type="hidden" name="simple_spc" value="262030348518049-262030348518049" />
           <!-- Name -->
           <fieldset class="border-0 p-0">
             <legend class="text-sm font-semibold text-navy">Full name <span class="text-brand">*</span></legend>
             <div class="mt-2 grid gap-4 sm:grid-cols-3">
               <div>
-                <input id="first-name" name="First name" type="text" required autocomplete="given-name" class={inputClass} placeholder="First" aria-label="First name" />
+                <input id="first-name" name="q3_q3_fullname1[first]" type="text" required autocomplete="given-name" class={inputClass} placeholder="First" aria-label="First name" />
               </div>
               <div>
-                <input id="middle-name" name="Middle name" type="text" autocomplete="additional-name" class={inputClass} placeholder="Middle" aria-label="Middle name" />
+                <input id="middle-name" name="q3_q3_fullname1[middle]" type="text" autocomplete="additional-name" class={inputClass} placeholder="Middle" aria-label="Middle name" />
               </div>
               <div>
-                <input id="last-name" name="Last name" type="text" required autocomplete="family-name" class={inputClass} placeholder="Last" aria-label="Last name" />
+                <input id="last-name" name="q3_q3_fullname1[last]" type="text" required autocomplete="family-name" class={inputClass} placeholder="Last" aria-label="Last name" />
               </div>
             </div>
           </fieldset>
@@ -132,45 +135,50 @@ const subLabel = 'mt-1 block text-sm text-slate';
           <div class="mt-6 grid gap-4 sm:grid-cols-2">
             <div>
               <label for="phone" class="block text-sm font-semibold text-navy">Phone number <span class="text-brand">*</span></label>
-              <input id="phone" name="Phone" type="tel" required autocomplete="tel" class={inputClass} placeholder="(555) 123-4567" />
+              <input id="phone" name="q4_q4_phone2[full]" type="tel" required autocomplete="tel" class={inputClass} placeholder="(555) 123-4567" />
             </div>
             <div>
               <label for="email" class="block text-sm font-semibold text-navy">Email <span class="text-brand">*</span></label>
-              <input id="email" name="Email" type="email" required autocomplete="email" class={inputClass} placeholder="you@example.com" />
+              <input id="email" name="q5_q5_email3" type="email" required autocomplete="email" class={inputClass} placeholder="you@example.com" />
             </div>
           </div>
 
           <!-- DOB -->
-          <div class="mt-6">
-            <label for="dob" class="block text-sm font-semibold text-navy">Date of birth <span class="text-brand">*</span></label>
-            <input id="dob" name="Date of birth" type="date" required class={inputClass + ' sm:max-w-xs'} />
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class="text-sm font-semibold text-navy">Date of birth <span class="text-brand">*</span></legend>
+            <div class="mt-2 flex max-w-xs gap-3">
+              <input name="q6_q6_datetime4[month]" type="number" min="1" max="12" required inputmode="numeric" class={inputClass} placeholder="MM" aria-label="Birth month" />
+              <input name="q6_q6_datetime4[day]" type="number" min="1" max="31" required inputmode="numeric" class={inputClass} placeholder="DD" aria-label="Birth day" />
+              <input name="q6_q6_datetime4[year]" type="number" min="1900" max="2010" required inputmode="numeric" class={inputClass} placeholder="YYYY" aria-label="Birth year" />
+            </div>
             <span class={subLabel}>You must be 18 or older to apply.</span>
-          </div>
+          </fieldset>
 
           <!-- Address -->
           <fieldset class="mt-6 border-0 p-0">
             <legend class="text-sm font-semibold text-navy">Home address <span class="text-brand">*</span></legend>
-            <input name="Street address" type="text" required autocomplete="address-line1" class={inputClass} placeholder="Street address" aria-label="Street address" />
-            <input name="Street address line 2" type="text" autocomplete="address-line2" class={inputClass} placeholder="Apt, suite, etc. (optional)" aria-label="Street address line 2" />
+            <input name="q7_q7_address5[addr_line1]" type="text" required autocomplete="address-line1" class={inputClass} placeholder="Street address" aria-label="Street address" />
+            <input name="q7_q7_address5[addr_line2]" type="text" autocomplete="address-line2" class={inputClass} placeholder="Apt, suite, etc. (optional)" aria-label="Street address line 2" />
             <div class="mt-4 grid gap-4 sm:grid-cols-3">
-              <input name="City" type="text" required autocomplete="address-level2" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="City" aria-label="City" />
-              <input name="State" type="text" required autocomplete="address-level1" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="State" aria-label="State" />
-              <input name="ZIP" type="text" required autocomplete="postal-code" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="ZIP code" aria-label="ZIP code" />
+              <input name="q7_q7_address5[city]" type="text" required autocomplete="address-level2" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="City" aria-label="City" />
+              <input name="q7_q7_address5[state]" type="text" required autocomplete="address-level1" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="State" aria-label="State" />
+              <input name="q7_q7_address5[postal]" type="text" required autocomplete="postal-code" class="rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand" placeholder="ZIP code" aria-label="ZIP code" />
             </div>
+            <input type="hidden" name="q7_q7_address5[country]" value="United States" />
           </fieldset>
 
           <!-- Availability + experience -->
           <div class="mt-6 grid gap-4 sm:grid-cols-2">
             <div>
               <label for="availability" class="block text-sm font-semibold text-navy">Availability</label>
-              <select id="availability" name="Availability" class="mt-2 w-full rounded-md border border-slate/40 bg-white px-4 py-3 text-base text-ink focus:border-brand">
+              <select id="availability" name="q9_q9_dropdown7" class="mt-2 w-full rounded-md border border-slate/40 bg-white px-4 py-3 text-base text-ink focus:border-brand">
                 <option value="" selected disabled>Please select…</option>
                 {availability.map((a) => <option value={a}>{a}</option>)}
               </select>
             </div>
             <div>
               <label for="experience" class="block text-sm font-semibold text-navy">Years of caregiving experience</label>
-              <input id="experience" name="Years of experience" type="number" min="0" max="60" class={inputClass} placeholder="e.g. 3" />
+              <input id="experience" name="q10_q10_number8" type="number" min="0" max="60" class={inputClass} placeholder="e.g. 3" />
             </div>
           </div>
 
@@ -180,7 +188,7 @@ const subLabel = 'mt-1 block text-sm text-slate';
             <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
               {['Yes', 'No'].map((opt) => (
                 <label class="flex items-center gap-2.5 text-base text-ink">
-                  <input type="radio" name="Owns a car" value={opt} required class="h-4 w-4 accent-brand" />
+                  <input type="radio" name="q12_q12_radio10" value={opt} required class="h-4 w-4 accent-brand" />
                   {opt}
                 </label>
               ))}
@@ -193,7 +201,7 @@ const subLabel = 'mt-1 block text-sm text-slate';
             <div class="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2">
               {qualifications.map((q) => (
                 <label class="flex items-start gap-2.5 text-base text-ink">
-                  <input type="checkbox" name="Qualifications" value={q} class="mt-1 h-4 w-4 shrink-0 accent-brand" />
+                  <input type="checkbox" name="q13_q13_checkbox11[]" value={q} class="mt-1 h-4 w-4 shrink-0 accent-brand" />
                   {q}
                 </label>
               ))}
@@ -206,7 +214,7 @@ const subLabel = 'mt-1 block text-sm text-slate';
             <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
               {['Yes', 'No'].map((opt) => (
                 <label class="flex items-center gap-2.5 text-base text-ink">
-                  <input type="radio" name="Authorized to work in US" value={opt} required class="h-4 w-4 accent-brand" />
+                  <input type="radio" name="q14_q14_radio12" value={opt} required class="h-4 w-4 accent-brand" />
                   {opt}
                 </label>
               ))}
@@ -219,7 +227,7 @@ const subLabel = 'mt-1 block text-sm text-slate';
             <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
               {['Yes', 'No'].map((opt) => (
                 <label class="flex items-center gap-2.5 text-base text-ink">
-                  <input type="radio" name="Convicted of a felony" value={opt} required class="h-4 w-4 accent-brand" />
+                  <input type="radio" name="q15_q15_radio13" value={opt} required class="h-4 w-4 accent-brand" />
                   {opt}
                 </label>
               ))}
@@ -232,7 +240,7 @@ const subLabel = 'mt-1 block text-sm text-slate';
             <label for="message" class="block text-sm font-semibold text-navy">
               Tell us a little about yourself <span class="font-normal text-slate">(optional)</span>
             </label>
-            <textarea id="message" name="About you" rows="4" class={inputClass} placeholder="Why do you want to be a caregiver? What kind of work are you looking for?"></textarea>
+            <textarea id="message" name="q17_tellUs" rows="4" class={inputClass} placeholder="Why do you want to be a caregiver? What kind of work are you looking for?"></textarea>
           </div>
 
           <button
