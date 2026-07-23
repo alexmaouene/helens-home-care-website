@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import { PHONE_DISPLAY, PHONE_HREF } from '../consts';
+---
+<Base
+  title="Thank You — Helen's Home Care"
+  description="Thank you for reaching out to Helen's Home Care. A member of our care team will be in touch shortly."
+>
+  <section class="bg-mist/40 py-20 md:py-28">
+    <div class="mx-auto max-w-2xl px-5 text-center">
+      <span class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-white text-brand shadow-sm">
+        <svg class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M8.5 12.5l2.5 2.5 4.5-5" />
+        </svg>
+      </span>
+
+      <div class="roofline mx-auto mt-8" aria-hidden="true"></div>
+      <h1 class="mt-6 font-display text-4xl text-navy md:text-5xl">Thank you</h1>
+      <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-slate">
+        We've received your message, and a member of our care team will reach
+        out — usually within one business day. We're glad you found us.
+      </p>
+      <p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-slate">
+        Need us sooner? Give us a call any time during business hours.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href={PHONE_HREF}
+          class="rounded-md bg-brand px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-navy"
+        >
+          Call {PHONE_DISPLAY}
+        </a>
+        <a href="/" class="text-base font-semibold text-brand hover:text-navy">
+          Back to home
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
