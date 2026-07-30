@@ -4,23 +4,23 @@ import Base from '../layouts/Base.astro';
 const services = [
   {
     title: 'Personal care',
-    body: 'Respectful hands-on assistance with bathing, dressing, grooming, and toileting — always at your loved one\u2019s pace and preserving their dignity.',
+    body: 'Respectful hands-on help with bathing, dressing, grooming, oral hygiene, toileting, and incontinence care — always at your loved one’s pace, with their dignity first.',
   },
   {
-    title: 'Meal preparation',
-    body: 'Grocery planning, cooking meals that match dietary preferences and doctor\u2019s guidance, and sharing the table so meals aren\u2019t eaten alone.',
+    title: 'Meals & assistance with eating',
+    body: 'Grocery planning and cooking meals that match dietary needs and doctor’s guidance — plus gentle help at the table for those who need assistance eating, so no meal is a struggle or eaten alone.',
   },
   {
     title: 'Medication reminders',
-    body: 'Friendly, reliable reminders to take medications on schedule. As a non-medical agency we don\u2019t administer medication — we make sure it isn\u2019t forgotten.',
+    body: 'Friendly, reliable reminders to take medications on schedule. As a non-medical agency we don’t administer medication — we make sure it isn’t forgotten.',
   },
   {
-    title: 'Mobility & transfer assistance',
-    body: 'Steady support moving around the house, getting in and out of bed or chairs, and reducing fall risk on stairs and slick floors.',
+    title: 'Mobility, transfers & exercise',
+    body: 'Steady support moving around the home, transferring in and out of bed or chairs, and reducing fall risk — plus encouragement with light exercise and prescribed physical-therapy routines.',
   },
   {
-    title: 'Light housekeeping',
-    body: 'Laundry, dishes, changing linens, tidying living spaces — keeping the home safe, clean, and comfortable without disrupting how they like things.',
+    title: 'Light housekeeping & laundry',
+    body: 'Laundry, dishes, changing linens, and tidying living spaces — keeping the home safe, clean, and comfortable without disrupting how they like things.',
   },
   {
     title: 'Companionship',
@@ -28,17 +28,21 @@ const services = [
   },
   {
     title: 'Errands & transportation',
-    body: 'Rides to appointments, pharmacy pick-ups, grocery runs, and church or social visits — so life doesn\u2019t shrink when driving stops.',
+    body: 'Rides to — and company at — doctor’s appointments, pharmacy pick-ups, grocery runs, and church or social visits, so life doesn’t shrink when driving stops.',
   },
   {
     title: 'Respite for family caregivers',
     body: 'Scheduled relief so the family member who carries most of the load can rest, travel, or simply catch their breath, knowing care continues.',
   },
+  {
+    title: 'Live-in & 24-hour care',
+    body: 'For loved ones who shouldn’t be alone, a caregiver who stays overnight or around the clock — so there’s always someone there for safety, comfort, and a hand at any hour.',
+  },
 ];
 ---
 <Base
   title="Services — Helen's Home Care"
-  description="Non-medical personal assistance services in Dallas–Fort Worth: personal care, meal preparation, medication reminders, mobility assistance, housekeeping, companionship, transportation, and respite care."
+  description="Non-medical personal assistance in Dallas–Fort Worth: personal care, meals and help with eating, medication reminders, mobility and exercise support, housekeeping and laundry, companionship, errands and transportation, respite, and live-in / 24-hour care."
 >
   <section class="bg-mist/40">
     <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
@@ -46,8 +50,9 @@ const services = [
       <h1 class="mt-6 font-display text-4xl text-navy md:text-5xl">Services</h1>
       <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate">
         Every family's needs are different, so care plans are built person by
-        person — a few hours a week to daily support. These are the services
-        we provide as a licensed Texas Personal Assistance Services agency.
+        person — a few hours a week to around-the-clock support. These are the
+        services we provide as a licensed Texas Personal Assistance Services
+        agency.
       </p>
       <img
         src="/images/care-meal.jpg"
