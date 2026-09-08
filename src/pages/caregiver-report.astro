@@ -1,0 +1,290 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Internal tool for Helen's caregivers — intentionally not linked in the public nav.
+// Posts to the "Caregiver Daily Shift Report" Jotform; field names must match it exactly.
+
+const careProvided = [
+  'Bathing/Personal Care',
+  'Dressing/Grooming',
+  'Toileting/Incontinence Care',
+  'Transfers/Mobility',
+  'Meals/Feeding',
+  'Medication Reminders',
+  'Light Housekeeping',
+  'Companionship/Activities',
+  'Transport to Appointments/Errands',
+];
+
+const inputClass =
+  'mt-2 w-full rounded-md border border-slate/40 px-4 py-3 text-base text-ink focus:border-brand';
+const legendClass = 'text-sm font-semibold text-navy';
+const radioLabel = 'flex items-center gap-2.5 text-base text-ink';
+const sectionCard = 'rounded-2xl border border-mist bg-white px-6 py-8 shadow-sm md:px-10';
+const sectionTitle = 'font-display text-2xl text-navy';
+---
+<Base
+  title="Caregiver Daily Shift Report — Helen's Home Care"
+  description="Internal daily shift report for Helen's Home Care caregivers."
+>
+  <section class="bg-mist/40 py-14 md:py-20">
+    <div class="mx-auto max-w-3xl px-5">
+      <!-- Header -->
+      <div class="text-center">
+        <div class="roofline mx-auto" aria-hidden="true"></div>
+        <h1 class="mt-5 font-display text-4xl text-navy md:text-5xl">Caregiver Daily Shift Report</h1>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate">
+          Please complete this form at the end of each shift. Document only
+          observations and care provided during your shift. Report urgent or
+          significant changes to the RN immediately according to agency policy.
+        </p>
+      </div>
+
+      <form
+        class="mt-10 space-y-8 text-left"
+        action="https://submit.jotform.com/submit/262506673770058"
+        method="POST"
+      >
+        <input type="hidden" name="formID" value="262506673770058" />
+        <input type="hidden" name="simple_spc" value="262506673770058-262506673770058" />
+
+        <!-- 1 · Shift information -->
+        <div class={sectionCard}>
+          <h2 class={sectionTitle}>1 · Shift information</h2>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="cg-name" class={legendClass}>Caregiver name <span class="text-brand">*</span></label>
+              <input id="cg-name" name="q2_q2_textbox0" type="text" required class={inputClass} />
+            </div>
+            <div>
+              <label for="cl-name" class={legendClass}>Client's name <span class="text-brand">*</span></label>
+              <input id="cl-name" name="q3_q3_textbox1" type="text" required class={inputClass} />
+            </div>
+          </div>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Date of shift <span class="text-brand">*</span></legend>
+            <div class="mt-2 flex max-w-xs gap-3">
+              <input name="q4_q4_datetime2[month]" type="number" min="1" max="12" required inputmode="numeric" class={inputClass} placeholder="MM" aria-label="Month" />
+              <input name="q4_q4_datetime2[day]" type="number" min="1" max="31" required inputmode="numeric" class={inputClass} placeholder="DD" aria-label="Day" />
+              <input name="q4_q4_datetime2[year]" type="number" min="2024" max="2035" required inputmode="numeric" class={inputClass} placeholder="YYYY" aria-label="Year" />
+            </div>
+          </fieldset>
+
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <fieldset class="border-0 p-0">
+              <legend class={legendClass}>Shift start time <span class="text-brand">*</span></legend>
+              <div class="mt-2 flex gap-3">
+                <input name="q5_q5_time3[timeInput]" type="text" required pattern="[0-9]{1,2}:[0-9]{2}" class={inputClass} placeholder="8:00" aria-label="Start time" />
+                <select name="q5_q5_time3[ampm]" required class="mt-2 rounded-md border border-slate/40 bg-white px-3 py-3 text-base text-ink focus:border-brand" aria-label="Start AM or PM">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
+            </fieldset>
+            <fieldset class="border-0 p-0">
+              <legend class={legendClass}>Shift end time <span class="text-brand">*</span></legend>
+              <div class="mt-2 flex gap-3">
+                <input name="q6_q6_time4[timeInput]" type="text" required pattern="[0-9]{1,2}:[0-9]{2}" class={inputClass} placeholder="5:00" aria-label="End time" />
+                <select name="q6_q6_time4[ampm]" required class="mt-2 rounded-md border border-slate/40 bg-white px-3 py-3 text-base text-ink focus:border-brand" aria-label="End AM or PM">
+                  <option value="AM">AM</option>
+                  <option value="PM" selected>PM</option>
+                </select>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <!-- 2 · Client status -->
+        <div class={sectionCard}>
+          <h2 class={sectionTitle}>2 · Client status</h2>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Overall client condition <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['At baseline', 'Some change noted', 'Significant concern'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="radio" name="q7_q7_radio5" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Mood / behavior <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['Calm/cooperative', 'Anxious', 'Agitated', 'Restless'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="radio" name="q8_q8_radio6" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Any changes from normal? <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['No', 'Yes'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="radio" name="q9_q9_radio7" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <div class="mt-6">
+            <label for="changes" class={legendClass}>Describe any changes or concerns</label>
+            <textarea id="changes" name="q10_q10_textarea8" rows="3" class={inputClass} placeholder="If you answered Yes above, describe what you observed."></textarea>
+          </div>
+        </div>
+
+        <!-- 3 · Care provided -->
+        <div class={sectionCard}>
+          <h2 class={sectionTitle}>3 · Care provided</h2>
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Care / services provided this shift <span class="text-brand">*</span> <span class="font-normal text-slate">(check all that apply)</span></legend>
+            <div class="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+              {careProvided.map((c) => (
+                <label class="flex items-start gap-2.5 text-base text-ink">
+                  <input type="checkbox" name="q11_q11_checkbox9[]" value={c} class="mt-1 h-4 w-4 shrink-0 accent-brand" />
+                  {c}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- 4 · Nutrition & elimination -->
+        <div class={sectionCard}>
+          <h2 class={sectionTitle}>4 · Nutrition &amp; elimination</h2>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Food intake <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['Good', 'Fair', 'Poor', 'Refused', 'N/A'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="radio" name="q12_q12_radio10" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Fluid intake <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['Adequate', 'Limited', 'Refused'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="radio" name="q13_q13_radio11" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Bowel movement <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['Yes', 'No'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="radio" name="q14_q14_radio12" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- 5 · Safety & incidents -->
+        <div class={sectionCard}>
+          <h2 class={sectionTitle}>5 · Safety &amp; incidents</h2>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Fall or near-fall? <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['No', 'Yes'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="radio" name="q15_q15_radio13" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Other incidents or safety concerns? <span class="text-brand">*</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['No', 'Yes'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="radio" name="q16_q16_radio14" value={opt} required class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+            <span class="mt-2 block text-sm text-slate">If yes, describe in the follow-up section below and notify the RN per agency policy.</span>
+          </fieldset>
+        </div>
+
+        <!-- 6 · Communication & follow-up -->
+        <div class={sectionCard}>
+          <h2 class={sectionTitle}>6 · Communication &amp; follow-up</h2>
+
+          <fieldset class="mt-6 border-0 p-0">
+            <legend class={legendClass}>Was anyone notified of a concern? <span class="font-normal text-slate">(check all that apply)</span></legend>
+            <div class="mt-3 flex flex-wrap gap-x-8 gap-y-3">
+              {['No', 'RN', 'Family'].map((opt) => (
+                <label class={radioLabel}>
+                  <input type="checkbox" name="q17_q17_checkbox15[]" value={opt} class="h-4 w-4 accent-brand" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <div class="mt-6">
+            <label for="followup" class={legendClass}>Follow-up needed / additional information</label>
+            <textarea id="followup" name="q18_q18_textarea16" rows="3" class={inputClass}></textarea>
+          </div>
+        </div>
+
+        <!-- 7 · End of shift summary -->
+        <div class={sectionCard}>
+          <h2 class={sectionTitle}>7 · End of shift summary</h2>
+
+          <div class="mt-6">
+            <label for="summary" class={legendClass}>Brief shift summary <span class="text-brand">*</span></label>
+            <textarea id="summary" name="q19_q19_textarea17" rows="4" required class={inputClass} placeholder="A few sentences about how the shift went overall."></textarea>
+          </div>
+
+          <fieldset class="mt-6 rounded-lg bg-mist/60 p-4">
+            <label class="flex items-start gap-3 text-base text-ink">
+              <input
+                type="checkbox"
+                name="q20_q20_checkbox18[]"
+                value="I certify that this report accurately reflects the care provided and my observations during this shift."
+                required
+                class="mt-1 h-4 w-4 shrink-0 accent-brand"
+              />
+              <span><strong class="text-navy">Caregiver attestation:</strong> I certify that this report accurately reflects the care provided and my observations during this shift.</span>
+            </label>
+          </fieldset>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded-md bg-brand px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-navy"
+        >
+          Submit shift report
+        </button>
+
+        <p class="text-center text-sm leading-relaxed text-slate">
+          For urgent or significant changes, don't wait for this form — call the
+          office at <a href="tel:+12148130235" class="font-semibold text-brand">(214) 813-0235</a> immediately.
+        </p>
+      </form>
+    </div>
+  </section>
+</Base>
